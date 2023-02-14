@@ -42,8 +42,8 @@
     <div class="hero_area">
       <!-- header section strats -->
       <div class="brand_box">
-        <a class="navbar-brand" href="index.html">
-          <span> Ninom </span>
+        <a class="navbar-brand" href={% url 'home' %}>
+          <span> BugssFood </span>
         </a>
       </div>
       <!-- end header section -->
@@ -55,9 +55,10 @@
           data-ride="carousel"
         >
           <div class="carousel-inner">
-            <div class="carousel-item active">
+            {% for i in covers %}
+            <div class="carousel-item {% if i.is_active %} active {% endif %}">
               <div class="img-box" style="
-              background-image: url({% static 'images/back-2.jpg' %});
+              background-image: url({{i.image.url}});
               width: 100%;
               height: 565px;
               background-repeat: no-repeat;
@@ -66,7 +67,8 @@
               " >
               </div>
             </div>
-            <div class="carousel-item">
+            {% endfor %}
+            {% comment %} <div class="carousel-item">
               <div class="img-box">
                 <img src={% static 'images/slider-img.jpg' %} alt="" />
               </div>
@@ -76,7 +78,7 @@
                 <img src={% static 'images/slider-img.jpg' %} alt="" />
               </div>
             </div>
-          </div>
+          </div> {% endcomment %}
           <a
             class="carousel-control-prev"
             href="#carouselExampleControls"

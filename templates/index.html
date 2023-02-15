@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Home{% endblock title %}Home
+{% block title %}Home{% endblock title %}
 {% block content %}
 
 
@@ -77,7 +77,7 @@
         {% comment %} <img src={{c.picture.url}} alt="" /> {% endcomment %}
         <div class="link_box">
           <h5>{{c.category}}</h5>
-          <a href=""> Buy Now </a>
+          <a href={% url 'food_by_category' c.id %}> Buy Now </a>
         </div>
       </div>
       {% endfor %}

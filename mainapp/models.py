@@ -15,6 +15,9 @@ class Cover(models.Model):
         verbose_name = 'Cover'
         verbose_name_plural = 'Covers'
 
+    def __str__(self):
+        return f'{self.id}: {self.is_active}'
+
 
 class Category(models.Model):
 
@@ -32,3 +35,15 @@ class Category(models.Model):
 
     def get_absolute_url(self):
         return reverse("Category_detail", kwargs={"pk": self.pk})
+
+
+class FoodModel(models.Model):
+    name = models.CharField(("name"), max_length=50)
+    picture = models.ImageField(("picture"), upload_to='food-models')
+    about = models.TextField(("about"))
+    price = models.IntegerField(("Price"))
+    category = models.ForeignKey(Category, verbose_name=(
+        "category"), on_delete=models.PROTECT)
+
+    def __str__(self):
+        return self.name

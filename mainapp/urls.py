@@ -1,9 +1,9 @@
 from django.urls import path, include
 
-from mainapp.views import HomeView, food_by_category
+from mainapp.views import  *
 
 
 urlpatterns = [
-    path('', HomeView.as_view(), name='home'),
-    path('category/<int:category_id>', food_by_category, name='food_by_category')
+    path('', HomeCreateView.as_view(), name='home'),
+    path('category/<int:pk>', FoodDetailView.as_view(), name='detail')
 ]

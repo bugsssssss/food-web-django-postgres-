@@ -5,9 +5,18 @@ from mainapp.models import *
 
 
 class FoodAdmin(admin.ModelAdmin):
-    list_display = ('name', 'price', 'category')
+    list_display = ('pk','name', 'price', 'category')
+
+@admin.register(Callback)
+class CallbackAdmin(admin.ModelAdmin):
+    list_display = ('name', 'phone')
+    
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ( 'pk','category')
+    
 
 
 admin.site.register(Cover)
-admin.site.register(Category)
+# admin.site.register(Category)
 admin.site.register(FoodModel, FoodAdmin)

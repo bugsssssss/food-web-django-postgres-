@@ -23,20 +23,20 @@ data = {
 #         return context
 
 
-def food_by_category(request, category_id):
-    category = Category.objects.get(id=category_id)
-    food_items = FoodModel.objects.filter(category=category)
-    context = {'category': category, 'food_items': food_items,
-               'covers': Cover.objects.all(), 'data': data, 'count': 'count'}
-    return render(request, 'fruit.html', context)
+# def food_by_category(request, category_id):
+#     category = Category.objects.get(id=category_id)
+#     food_items = FoodModel.objects.filter(category=category)
+#     context = {'category': category, 'food_items': food_items,
+#                'covers': Cover.objects.all(), 'data': data, 'count': 'count'}
+#     return render(request, 'fruit.html', context)
 
 
 class FoodDetailView(FormMixin, DetailView):
     model = FoodModel
-    template_name = "basket.html"
+    template_name = "fruit.html"
     context_object_name = 'post'
     form_class = FoodModelForm
-    # success_url = reverse_lazy('#')
+    success_url = reverse_lazy('#')
 
     def get(self, request, * args, **kwargs):
         # print(request.GET['search'])
